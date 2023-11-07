@@ -61,7 +61,8 @@ for chair_box in chair_boxes:
                 color = (0, 0, 255)  # Red color for chair
                 thickness = 13  # Line thickness
                 cv2.rectangle(image, (x1_chair, y1_chair), (x2_chair, y2_chair), color, thickness)
-
+                #put text on image
+                cv2.putText(image, "Occupied", (x1_chair, y1_chair - 10), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,0,0), 6)
 # Draw bounding boxes for persons (green color)
 for person_box in person_boxes:
     x1_person, y1_person, x2_person, y2_person = person_box
@@ -71,7 +72,7 @@ for person_box in person_boxes:
 
 cv2.namedWindow("Image with Bounding Boxes", cv2.WINDOW_NORMAL)
 cv2.imshow("Image with Bounding Boxes", image)
-
+cv2.imwrite('output.jpg', image)
 # Define a flag to control the loop
 exit_flag = False
 
@@ -84,4 +85,4 @@ while True:
 if exit_flag:
     cv2.destroyAllWindows()  # Close the OpenCV window
 
-cv2.imwrite('output.jpg', image)  # Save the image with bounding boxes
+  # Save the image with bounding boxes
