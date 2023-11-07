@@ -21,7 +21,7 @@ classNames = [
 model = YOLO('yolov8l.pt')
 results = model('data/frame1.jpg', show=True, conf=0.6)
 image = cv2.imread('data/frame1.jpg')
-
+empty_count  = 0 
 person_boxes = []
 chair_boxes = []
 
@@ -40,29 +40,40 @@ for r in results:
 
 # Apply Intersection over Union
 for chair_box in chair_boxes:
+    is_occupied = False  # Flag to determine if the chair is occupied
+
     for person_box in person_boxes:
         iou = calculate_iou(chair_box, person_box)
         
-        # If IoU is above a threshold, change the chair's bounding box color to red
-        if iou > 0.3:
-            x1_chair, y1_chair, x2_chair, y2_chair = chair_box
-            color = (0, 0, 255)  # Red color for chair
-            thickness = 13  # Line thickness
-            cv2.rectangle(image, (x1_chair, y1_chair), (x2_chair, y2_chair), color, thickness)
-            # Put text on the image
-            cv2.putText(image, "Occupied", (x1_chair, y1_chair - 10), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 0), 6)
+        if iou >= 0.3:
+            is_occupied = True
+            break  # If chair is occupied, break the loop
 
-# Draw bounding boxes for persons (green color)
+    x1_chair, y1_chair, x2_chair, y2_chair = chair_box
+    if is_occupied:
+        color = (0, 0, 255)  # Red color for occupied chair
+        text = "Occupied"
+    else:
+        empty_count +=1
+        color = (0, 255, 0)  # Green color for unoccupied chair
+        text = "Empty"
+    thickness = 13 if is_occupied else 6  # Line thickness
+    cv2.rectangle(image, (x1_chair, y1_chair), (x2_chair, y2_chair), color, thickness)
+    # Put text on the image
+    cv2.putText(image, text, (x1_chair, y1_chair - 10), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 0), 6 if is_occupied else 6)
+
+# Draw bounding boxes for persons (purple color)
 for person_box in person_boxes:
     x1_person, y1_person, x2_person, y2_person = person_box
-    color = (0, 255, 0)  # Green color for persons
+    color = (255, 0 , 255)  # Purple color for persons
     thickness = 5  # Line thickness
     cv2.rectangle(image, (x1_person, y1_person), (x2_person, y2_person), color, thickness)
+# Add a text to display count of unoccupied chairs
+cv2.putText(image, "Empty chairs: {}".format(empty_count), (25, 100), cv2.FONT_HERSHEY_SIMPLEX, 3, (255, 0, 0), 10)
 
 cv2.namedWindow("Image with Bounding Boxes", cv2.WINDOW_NORMAL)
 cv2.imshow("Image with Bounding Boxes", image)
 cv2.imwrite('output.jpg', image)
-
 # Define a flag to control the loop
 exit_flag = False
 
