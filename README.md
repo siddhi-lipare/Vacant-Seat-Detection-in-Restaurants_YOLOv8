@@ -20,7 +20,7 @@ As the intake in IISER - B is increasing day by day, the crowd in the campus res
 - Install necessary packages using `pip install -r requirements.txt`
 
 ----------
-Get the output:
+*Get the output:*
 ----------
 - Run the Following command:
 ```bash
