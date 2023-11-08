@@ -26,4 +26,8 @@ As the intake in IISER - B is increasing day by day, the crowd in the campus res
 ```bash
 python main.py
 ```
-- View `output.jpg`
+and
+```bash
+python main_vid.py
+```
+- View `output.jpg` and `output_vid.mp4`
