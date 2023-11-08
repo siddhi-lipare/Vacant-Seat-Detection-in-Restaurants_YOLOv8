@@ -30,4 +30,4 @@ and
 ```bash
 python main_vid.py
 ```
-- View `output.jpg` and `output_vid.mp4`
+View `output.jpg` and `output_vid.mp4`
