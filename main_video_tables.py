@@ -4,7 +4,6 @@ from datetime import datetime
 from ultralytics import YOLO
 from iou import calculate_iou
 
-# Load the YOLO model
 model = YOLO('yolov8l.pt')
 
 classNames = [
@@ -25,9 +24,9 @@ classNames = [
 ]
 
 # Input and Output video file paths
-input_video_path = 'data/Sudarshan_small.mp4'
+input_video_path = 'data/ich.mp4'
 output_video_path = 'output_video_time.mp4'
-csv_file = 'empty_tables_count.csv'
+csv_file = 'empty_tables_data.csv'
 
 # Open the video file
 cap = cv2.VideoCapture(input_video_path)
@@ -45,7 +44,7 @@ while cap.isOpened():
         break
 
     # Detect objects in the frame
-    results = model(frame, show=False, conf=0.3)
+    results = model(frame, show=False, conf=0.6)
 
     chair_boxes = []
     person_boxes = []
@@ -68,16 +67,16 @@ while cap.isOpened():
 
     unoccupied_chairs = []
     for chair_box in chair_boxes:
-        is_unoccupied = True
+        is_empty = True
 
         for person_box in person_boxes:
             iou = calculate_iou(chair_box, person_box)
 
-            if iou >= 0.2:
-                is_unoccupied = False
+            if iou >= 0.3:
+                is_empty = False
                 break
 
-        if is_unoccupied:
+        if is_empty:
             unoccupied_chairs.append(chair_box)
 
     empty_tables = []
@@ -87,7 +86,7 @@ while cap.isOpened():
         for chair_box in unoccupied_chairs:
             iou = calculate_iou(table_box, chair_box)
 
-            if iou >= 0.2:
+            if iou >= 0.3:
                 is_empty = False
                 break
 
