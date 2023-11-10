@@ -109,4 +109,4 @@ data = {'Timestamp': timestamps, 'Empty Seats Count': empty_seats_count}
 df = pd.DataFrame(data)
 
 # Save data to CSV file
-df.to_csv('empty_seats_data.csv', index=False)
+df.to_csv('csv/empty_seats_data.csv', index=False)

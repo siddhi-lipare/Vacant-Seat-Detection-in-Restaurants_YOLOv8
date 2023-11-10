@@ -19,8 +19,8 @@ classNames = [
     'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush'
 ]
 model = YOLO('yolov8l.pt')
-results = model('data/frame1.jpg', show=True, conf=0.7)
-image = cv2.imread('data/frame1.jpg')
+results = model('data/ich2.jpg', show=True, conf=0.5)
+image = cv2.imread('data/ich2.jpg')
 empty_count  = 0 
 person_boxes = []
 chair_boxes = []
