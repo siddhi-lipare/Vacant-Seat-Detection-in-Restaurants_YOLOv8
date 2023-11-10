@@ -24,10 +24,10 @@ As the intake in IISER - B is increasing day by day, the crowd in the campus res
 ----------
 - Run the Following command:
 ```bash
-python main.py
+python main_image.py
 ```
 and
 ```bash
-python main_vid.py
+python main_video.py
 ```
-View `output.jpg` and `output_vid.mp4`
+View `output_image.jpg` and `outputvid.mp4`
