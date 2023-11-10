@@ -24,7 +24,7 @@ classNames = [
 ]
 
 # Input and Output video file paths
-input_video_path = 'data/ich.mp4'
+input_video_path = 'data/sudarshan3.mp4'
 output_video_path = 'output_video_time.mp4'
 csv_file = 'empty_tables_data.csv'
 

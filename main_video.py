@@ -22,7 +22,7 @@ classNames = [
 ]
 
 model = YOLO('yolov8l.pt')
-video_path = "data/ich.mp4"
+video_path = "data/sudarshan2.mp4"
 
 # Open the video file
 cap = cv2.VideoCapture(video_path)
