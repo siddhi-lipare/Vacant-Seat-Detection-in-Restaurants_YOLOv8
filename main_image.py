@@ -73,7 +73,7 @@ cv2.putText(image, "Empty chairs: {}".format(empty_count), (25, 100), cv2.FONT_H
 
 cv2.namedWindow("Image with Bounding Boxes", cv2.WINDOW_NORMAL)
 cv2.imshow("Image with Bounding Boxes", image)
-cv2.imwrite('output.jpg', image)
+cv2.imwrite('out/output_image.jpg', image)
 # Define a flag to control the loop
 exit_flag = False
 

@@ -29,7 +29,7 @@ cap = cv2.VideoCapture(video_path)
 
 # Define the video writer to save the output
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-output_video = cv2.VideoWriter('outputvid.mp4', fourcc, 30.0, (int(cap.get(3)), int(cap.get(4))))
+output_video = cv2.VideoWriter('out/outputvid.mp4', fourcc, 30.0, (int(cap.get(3)), int(cap.get(4))))
 
 # Initialize empty seats count and list for data collection
 empty_seats_count = []
