@@ -1,4 +1,4 @@
-# Vacant_Seat_Detection_YOLO
+# Vacant_Seat_Detection_YOLOv8
 Developing a Computer Vision based System which captures live footage from the CCTV Camera in campus restaurants to detect empty seats.
 
 *Motivation*
