@@ -7,7 +7,6 @@ As the intake in IISER - B is increasing day by day, the crowd in the campus res
 
 <p align="middle">
 <img src="https://raw.githubusercontent.com/siddhi-lipare/Vacant-Seat-Detection-in-Restaurants/main/out/output_image.jpg" width="45%" />
-
 </p>
 
 ----------
